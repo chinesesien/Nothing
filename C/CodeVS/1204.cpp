@@ -5,8 +5,15 @@
 #include<cstring>
 #include<algorithm>
 using namespace std;
-int ans[1000000]
+
+char a[103],b[103];
+string ta,tb;
+
 int main(){
-	
+	scanf("%s%s",a,b);
+	ta=a;
+	tb=b;
+	printf("%d",ta.find(tb)+1);
+
 	return 0;
 }

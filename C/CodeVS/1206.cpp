@@ -5,8 +5,11 @@
 #include<cstring>
 #include<algorithm>
 using namespace std;
-int ans[1000000]
+
+double x;
+
 int main(){
-	
+	scanf("%lf",&x);
+	printf("%.2lf",x);
 	return 0;
 }

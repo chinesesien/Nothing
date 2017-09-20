@@ -5,8 +5,16 @@
 #include<cstring>
 #include<algorithm>
 using namespace std;
-int ans[1000000]
+
+int n,ans=0,cnm;
+
 int main(){
-	
+	scanf("%d",&n);
+	for(;n--;){
+		scanf("%d",&cnm);
+		ans+=cnm;
+	}
+	printf("%d",ans);
+
 	return 0;
 }
