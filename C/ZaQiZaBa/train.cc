@@ -161,7 +161,7 @@ int main(){
 	scanf("%d%d",&n,&m);
 	for(int i=0;i<=m;i++) v[i]=0;
 	for(int i=1;i<=n;i++) in(i);
-	fclose(stdin);
+	freopen("CON","r",stdin);
 	control();
 	return 0;
 }
