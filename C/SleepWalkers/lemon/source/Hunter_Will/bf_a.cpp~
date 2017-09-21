@@ -1,0 +1,45 @@
+#include<iostream>
+#include<cstdio>
+
+using namespace std;
+
+#define abs(i) ((i)>=0?(i):-(i))
+int r,c,n,m,ans=0x3f3f3f3f;
+int sei[20][20],sej[20][20];
+
+void dfs(int si,int li,int sj,int lj){
+    if(si>n&&sj>m){
+	int w=0;
+	for(int i=1;i<=n;i++){
+	    for(int j=1;j<=m;j++){
+		if(i>1)w+=abs((mp[sei[i][j]][sej[i][j]]
+			       -mp[sei[i-1][j]][sej[i-1][j]]));
+		if(j>1)w+=abs((mp[sei[i][j]][sej[i][j]]
+			       -mp[sei[i][j-1]][sej[i][j-1]]));
+	    }
+	}
+	ans=min(ans,w);
+	return ;
+    }
+    if(si<=n)for(int i=li+1;i<=r;i++){
+	sei[si][sj]=i;
+	sej[si][sj]=lj;
+	dfs(si+1,i,sj,lj);
+    }
+    if(sj<=m)for(int j=lj+1;j<=c;j++){
+	sei[si][sj]=li;
+	sej[si][sj]=j;
+	dfs(si,li,sj+1,j);
+    }
+}
+	    
+
+int main(){
+    scanf("%d%d%d%d",&r,&c,&n,&m);
+    for(int i=1;i<=r;i++)
+	for(int j=1;j<=c;j++)
+	    scanf("%d",&mp[i][j]);
+    dfs(1,0,1,0);
+    cout<<ans<<endl;
+    return 0;
+}

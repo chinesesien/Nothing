@@ -1,0 +1,41 @@
+#include<iostream>
+#include<cstdio>
+
+using namespace std;
+typedef long long ll;
+#define maxn 1000000
+int vis[maxn];
+
+ll power(ll a,int b){
+    ll ret=1;
+    while(b){
+	if(b&1)ret=ret*a;
+	b>>=1;
+	a=a*a;
+    }
+    return ret;
+}
+
+int main(){
+    freopen("beta.in","r",stdin);
+    freopen("beta.out","w",stdout);
+    int n,t,i;
+    ll p,ret=1;
+    scanf("%d%d",&n,&t);
+    p=power(10,t);
+    for(i=1;i<=100;i++){
+	ret=(ret*n)%p;
+	if(vis[ret])break;
+	vis[ret]=1;
+    }
+    for(int j=1;j<=i;j++){
+	if(vis[ret])vis[ret]=0;
+	ret=(ret*n)%p;
+    }
+    for(int j=0;j<p;j++)if(vis[j]){puts("-1");return 0;}
+    cout<<i-1<<endl;
+    fclose(stdin);
+    fclose(stdout);
+    return 0;
+}
+    
